@@ -13,7 +13,7 @@
 
 -- Set extrusion height and width to automatically calculate the required perimter flow rate based on Nopheads equation
 height = 0.2
-width = 0.53
+width = 0.55
 -- Perimter flow rate used by Kisslicer and Cura
 perimeter = math.floor(((1 + (3.14159/4 -1) / (width/height))*100)+0.5)
 
@@ -36,61 +36,84 @@ local fout = assert( io.open( arg[1] .. ".processed", "wb" ) ) -- writing must b
 for line in fin:lines() do
 	
 		-- Kisslicer
-		local inter = line:match( "; 'Support Interface',") -- Find start of support interface
-		local sup = line:match( "; 'Support (may Stack)',") -- Find start of support
-		local perim = line:match( "; 'Perimeter',") -- Find start of perimeter
-		local loop = line:match( "; 'Loop',") -- Find start of loops
-		local solid = line:match( "; 'Solid',") -- Find start of solid infill
-		local sparse = line:match( "; 'Stacked Sparse Infill',") -- Find start of sparse infill
+		local inter_k = line:match( "; 'Support Interface',") -- Find start of support interface
+		local sup_k = line:match( "; 'Support (may Stack)',") -- Find start of support
+		local perim_k = line:match( "; 'Perimeter',") -- Find start of perimeter
+		local loop_k = line:match( "; 'Loop',") -- Find start of loops
+		local solid_k = line:match( "; 'Solid',") -- Find start of solid infill
+		local sparse_k = line:match( "; 'Stacked Sparse Infill',") -- Find start of sparse infill
 	
 		-- Cura
-		local sup = line:match(";TYPE:SUPPORT") -- Find start of support
-		local perim = line:match(";TYPE:WALL\--OUTER") -- Find start of perimeter
-		local loop = line:match(";TYPE:WALL\--INNER") -- Find start of loops
-		local infill = line:match(";TYPE:FILL") -- Find start of sparse infill
+		local sup_c = line:match(";TYPE:SUPPORT") -- Find start of support
+		local perim_c = line:match(";TYPE:WALL\--OUTER") -- Find start of perimeter
+		local loop_c = line:match(";TYPE:WALL\--INNER") -- Find start of loops
+		local infill_c = line:match(";TYPE:FILL") -- Find start of sparse infill
 
 	
 	-- Set new flow rate of support interface (Kisslicer)
-	if inter then
+	if inter_k then
 		fout:write("; Set support interface flow rate.\r\n")
 		fout:write("M221 S")
 		fout:write(interface .. "\r\n;\r\n")
 		fout:write(line)
 
-	-- Set new flow rate of support
-	elseif sup then
+	-- Set new flow rate of support (Kisslicer)
+	elseif sup_k then
 		fout:write("; Set support flow rate.\r\n")
 		fout:write("M221 S")
 		fout:write(support .. "\r\n;\r\n")
-		fout:write(line .. "\r\n")
+		fout:write(line)
 
-	-- Set new flow rate of outer perimeter
-	elseif perim then
+	-- Set new flow rate of outer perimeter (Kisslicer)
+	elseif perim_k then
 		fout:write("; Set perimeter flow rate.\r\n")
 		fout:write("M221 S")
 		fout:write(perimeter .. "\r\n;\r\n")
-		fout:write(line .. "\r\n")
+		fout:write(line)
 
-	-- Set new flow rate of loops
-	elseif loop then
+	-- Set new flow rate of loops (Kisslicer)
+	elseif loop_k then
 		fout:write("; Set flow rate for loops.\r\n")
 		fout:write("M221 S")
 		fout:write(loops .. "\r\n;\r\n")
-		fout:write(line .. "\r\n")
+		fout:write(line)
 
 	-- Set new flow rate of solid infill (Kisslicer)
-	elseif solid then
+	elseif solid_k then
 		fout:write("; Set solid infill flow rate.\r\n")
 		fout:write("M221 S")
 		fout:write(solid_infill .. "\r\n;\r\n")
 		fout:write(line)
 
 	-- Set new flow rate of sparse infill (Kisslicer)
-	elseif sparse then
+	elseif sparse_k then
 		fout:write("; Set sparse infill flow rate.\r\n")
 		fout:write("M221 S")
 		fout:write(sparse_infill .. "\r\n;\r\n")
 		fout:write(line)
+
+
+	-- Cura only
+	-- Set new flow rate of support (Cura)
+	elseif sup_c then
+		fout:write("; Set support flow rate.\r\n")
+		fout:write("M221 S")
+		fout:write(support .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
+
+	-- Set new flow rate of outer perimeter (Cura)
+	elseif perim_c then
+		fout:write("; Set perimeter flow rate.\r\n")
+		fout:write("M221 S")
+		fout:write(perimeter .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
+
+	-- Set new flow rate of loops (Cura)
+	elseif loop_c then
+		fout:write("; Set flow rate for loops.\r\n")
+		fout:write("M221 S")
+		fout:write(loops .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of infill (Cura)
 	elseif infill then
