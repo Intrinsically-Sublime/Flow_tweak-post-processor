@@ -12,7 +12,7 @@ The script is written in lua so you will need lua installed or an executable cop
 and the slicer. 
 
 To use with Kisslicer you will also need to add the following to the post-process field in the firmware tab of Kisslicer.
-lua "Flow_rate.lua" " <FILE> "
+lua "Flow_rate.lua" " '<FILE>' "
 
 To use with Cura you will have to run it as a seperate process from the command line with the following command.
 lua "Flow_rate.lua" "example.gcode"
