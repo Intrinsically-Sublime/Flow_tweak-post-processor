@@ -23,7 +23,7 @@ interface = 100		-- Support interface used by Kisslicer only.
 support = 100		-- All support in Cura and for main support in Kisslicer
 loops = 100		-- Inner perimeters for Kisslicer and Cura
 solid_infill = 100	-- Solid infill used by Kisslicer only.
-sparse_infill = 100	-- All infill in Cura and solid infill in Kisslicer.
+sparse_infill = 100	-- All infill in Cura and sparse infill in Kisslicer.
 
 ---------------------------- END USER SETTINGS ----------------------------
 
