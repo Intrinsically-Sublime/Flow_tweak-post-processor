@@ -25,7 +25,7 @@ Note: The script creates a second gcode file marked processed.
  Uses
 ======
 1. Decrease perimeter flow rate as described above in case of holes coming out too small.
-2. Increase the loop flow rate to ensure all the loops all well fused to each other. Good for watertight prints.
+2. Increase the loop flow rate to ensure all the loops are well fused to each other. Good for watertight prints.
 3. Increase the support structure flow rate. Good to overcome starving the extruder from under extruding.
 4. Increase the sparse infill flow rate to ensure un-broken paths while using straight infill.
 5. Decrease the support interface flow rate to reduce the adhesion strength (Kisslicer only).
