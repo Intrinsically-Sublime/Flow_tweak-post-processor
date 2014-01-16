@@ -53,73 +53,63 @@ for line in fin:lines() do
 	-- Set new flow rate of support interface (Kisslicer)
 	if inter_k then
 		fout:write("; Set support interface flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(interface .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. interface .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of support (Kisslicer)
 	elseif sup_k then
 		fout:write("; Set support flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(support .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. support .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of outer perimeter (Kisslicer)
 	elseif perim_k then
 		fout:write("; Set perimeter flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(perimeter .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. perimeter .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of loops (Kisslicer)
 	elseif loop_k then
 		fout:write("; Set flow rate for loops.\r\n")
-		fout:write("M221 S")
-		fout:write(loops .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. loops .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of solid infill (Kisslicer)
 	elseif solid_k then
 		fout:write("; Set solid infill flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(solid_infill .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. solid_infill .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of sparse infill (Kisslicer)
 	elseif sparse_k then
 		fout:write("; Set sparse infill flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(sparse_infill .. "\r\n;\r\n")
-		fout:write(line)
+		fout:write("M221 S" .. sparse_infill .. "\r\n;\r\n")
+		fout:write(line .. "\r\n")
 
 
 	-- Cura only
 	-- Set new flow rate of support (Cura)
 	elseif sup_c then
 		fout:write("; Set support flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(support .. "\r\n;\r\n")
+		fout:write("M221 S" .. support .. "\r\n;\r\n")
 		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of outer perimeter (Cura)
 	elseif perim_c then
 		fout:write("; Set perimeter flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(perimeter .. "\r\n;\r\n")
+		fout:write("M221 S" .. perimeter .. "\r\n;\r\n")
 		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of loops (Cura)
 	elseif loop_c then
 		fout:write("; Set flow rate for loops.\r\n")
-		fout:write("M221 S")
-		fout:write(loops .. "\r\n;\r\n")
+		fout:write("M221 S" .. loops .. "\r\n;\r\n")
 		fout:write(line .. "\r\n")
 
 	-- Set new flow rate of infill (Cura)
 	elseif infill then
 		fout:write("; Set infill flow rate.\r\n")
-		fout:write("M221 S")
-		fout:write(sparse_infill .. "\r\n;\r\n")
+		fout:write("M221 S" .. sparse_infill .. "\r\n;\r\n")
 		fout:write(line .. "\r\n")
 		
 	else
