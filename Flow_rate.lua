@@ -1,5 +1,5 @@
 -- Flow_rate.lua
--- By Sublime 2013
+-- By Sublime 2013 https://github.com/Intrinsically-Sublime
 -- Adjust flow rate of individual sections of gcode based on comments
 
 -- Licence:  GPL v3
