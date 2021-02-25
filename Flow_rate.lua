@@ -45,8 +45,8 @@ for line in fin:lines() do
 	
 		-- Cura
 		local sup_c = line:match(";TYPE:SUPPORT") -- Find start of support
-		local perim_c = line:match(";TYPE:WALL\--OUTER") -- Find start of perimeter
-		local loop_c = line:match(";TYPE:WALL\--INNER") -- Find start of loops
+		local perim_c = line:match(";TYPE:WALL-OUTER") -- Find start of perimeter
+		local loop_c = line:match(";TYPE:WALL-INNER") -- Find start of loops
 		local infill_c = line:match(";TYPE:FILL") -- Find start of sparse infill
 
 	
